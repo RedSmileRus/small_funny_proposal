@@ -15,7 +15,7 @@
     body {
       height: 100vh;
       overflow: hidden;
-      background-color: #000; /* Цвет фона */
+      background-color: #f0f0f0; /* Совпадающий цвет фона */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -36,15 +36,17 @@
   <div class="emoji">😄</div>
 
   <script>
-    // Запуск фейерверка
+    // Запуск фейерверка с более яркими цветами для светлого фона
     const container = document.body;
     const fireworks = new Fireworks(container, {
-      delay: { min: 10, max: 20 },
-      speed: 4,
+      hue: { min: 0, max: 360 },
+      delay: { min: 15, max: 25 },
+      brightness: { min: 55, max: 85 }, // Более высокая яркость для светлого фона
+      speed: 3,
       acceleration: 1.04,
-      particles: 100,
-      trace: 3,
-      explosion: 5,
+      particles: 150,
+      trace: 4,
+      explosion: 6,
       boundaries: {
         top: 0,
         bottom: container.clientHeight,
