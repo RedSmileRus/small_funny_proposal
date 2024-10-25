@@ -4,29 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ура!</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Сброс стилей и добавление фона */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000; /* Цвет фона */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Смайлик */
+    .emoji {
+      font-size: 150px;
+      position: absolute;
+      z-index: 10; /* Поверх фейерверка */
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.0/dist/index.global.min.js"></script>
 </head>
 <body>
-  <div class="center">
-    <h1>🎉 Ура! 🎉</h1>
-    <div class="emoji">😄</div>
-  </div>
+  <!-- Смайлик в центре -->
+  <div class="emoji">😄</div>
 
   <script>
     // Запуск фейерверка
     const container = document.body;
     const fireworks = new Fireworks(container, {
-      delay: { min: 20, max: 30 },
-      speed: 3,
-      acceleration: 1.05,
+      delay: { min: 10, max: 20 },
+      speed: 4,
+      acceleration: 1.04,
       particles: 100,
       trace: 3,
-      explosion: 6,
+      explosion: 5,
       boundaries: {
-        top: 50,
+        top: 0,
         bottom: container.clientHeight,
-        left: 50,
+        left: 0,
         right: container.clientWidth
       }
     });

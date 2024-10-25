@@ -11,25 +11,15 @@
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
-    position: relative;
   }
   
-  .center {
+  .container {
     text-align: center;
   }
   
   h1 {
-    font-size: 48px;
+    font-size: 24px; /* Уменьшенный размер текста */
     margin-bottom: 20px;
-  }
-  
-  .emoji {
-    font-size: 150px;
-  }
-  
-  /* Стили для основной страницы */
-  .container {
-    text-align: center;
   }
   
   .buttons {
@@ -38,8 +28,8 @@
   }
   
   button {
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 8px 16px; /* Небольшое уменьшение отступов */
+    font-size: 16px; /* Уменьшенный размер текста на кнопках */
     cursor: pointer;
   }
   
