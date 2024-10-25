@@ -5,47 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ура!</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif; /* Добавим тот же шрифт, что и в основном окне */
+     * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
     }
 
     body {
-      height: 100vh;
-      overflow: hidden;
-      background-color: #f0f0f0;
-      display: flex;
-      align-items: flex-start; /* Выровняем содержимое относительно верхней части */
-      justify-content: center;
-      position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* Располагаем элементы сверху вниз */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    justify-content: flex-start; /* Выравнивание по верху страницы */
+    position: relative;
     }
 
-    /* Текст над смайликом */
     .text {
-      font-size: 24px;
-      text-align: center;
-      margin-bottom: 10px; /* Расстояние между текстом и смайликом */
-      font-family: Arial, sans-serif; /* Сделаем текст в стиле основного окна */
+    font-size: 24px;
+    text-align: center;
+    margin-top: 5vh; /* Отступ от верхнего края */
+    margin-bottom: 10px; /* Расстояние между текстом и смайликом */
     }
 
-    /* Центральный смайлик */
     .emoji {
-      font-size: 100px;
-      cursor: pointer;
-      position: relative;
-      z-index: 10;
-      margin-top: 15vh; /* Смещение на 15% вниз от верха страницы, чтобы текст и смайлик были видны */
+    font-size: 100px;
+    cursor: pointer;
+    z-index: 10;
+    margin-top: 0; /* Убираем лишнее смещение */
     }
 
-    /* Маленькие смайлики */
     .explosion-emoji {
-      position: absolute;
-      font-size: 30px;
-      opacity: 0;
-      transition: transform 2s ease-out, opacity 1.5s ease;
+    position: absolute;
+    font-size: 30px;
+    opacity: 0;
+    transition: transform 2s ease-out, opacity 1.5s ease;
     }
+
   </style>
 </head>
 <body>
