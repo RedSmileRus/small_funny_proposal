@@ -8,25 +8,25 @@
   body {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Выровняем содержимое по верхней части */
+    align-items: flex-start; /* Выравниваем элементы по верхней части экрана */
     height: 100vh;
     background-color: #f0f0f0; /* Цвет фона */
   }
   
   .container {
     text-align: center;
-    margin-top: 20vh; /* Смещение содержимого на 20% вниз от верхней части */
+    margin-top: 20vh; /* Отступ сверху для контейнера с текстом и кнопками */
   }
   
   h1 {
-    font-size: 24px; /* Уменьшенный размер текста */
+    font-size: 24px; /* Размер текста */
     margin-bottom: 20px;
   }
   
   .buttons {
     display: flex;
     justify-content: center; /* Центрирование кнопок */
-    gap: 20px;
+    gap: 20px; /* Расстояние между кнопками */
   }
   
   button {
