@@ -51,8 +51,17 @@
         const explosionEmoji = document.createElement("div");
         explosionEmoji.classList.add("explosion-emoji");
 
-        // Выбираем 30% смайликов оригинальных и 70% фейерверков
-        explosionEmoji.textContent = i < numberOfEmojis * 0.3 ? "😄" : "🎉"; // Оригинал или хлопушка
+        // Генерация случайного смайлика с разными шансами
+        const random = Math.random();
+        if (random < 0.01) {
+          explosionEmoji.textContent = "❤️"; // 1% шанс
+        } else if (random < 0.06) {
+          explosionEmoji.textContent = "😉"; // 5% шанс
+        } else if (i < numberOfEmojis * 0.3) {
+          explosionEmoji.textContent = "😄"; // 30% оригинальные смайлики
+        } else {
+          explosionEmoji.textContent = "🎉"; // 70% хлопушки
+        }
 
         // Начальная позиция в центре основного смайлика
         explosionEmoji.style.left = `${x}px`;
@@ -75,7 +84,7 @@
           setTimeout(() => {
             explosionEmoji.style.transform += ` translateY(100px)`;
             explosionEmoji.style.opacity = "0";
-            setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1500);
+            setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1000);
           }, 1000);
         }, 10); // Задержка перед началом разлета
       }
