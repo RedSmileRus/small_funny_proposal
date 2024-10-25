@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Пойдем гулять?🙂</h1>
+    <h1>Пойдем гулять? 🙂</h1>
     <div class="buttons">
       <button id="yes">Гоу!</button>
       <button id="no">Неа 😈</button>
@@ -20,6 +20,11 @@
     // Инициализация Telegram Web Apps
     const tg = window.Telegram.WebApp;
     tg.expand(); // Развернуть приложение на весь экран
+
+    // Добавляем обработчик на кнопку "Да"
+    document.getElementById("yes").addEventListener("click", function() {
+      window.location.href = "success.html"; // Перенаправляем на success.html
+    });
   </script>
 </body>
 </html>
