@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ура!</title>
   <style>
-    /* Сброс стилей и добавление фона */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,7 +14,7 @@
     body {
       height: 100vh;
       overflow: hidden;
-      background-color: #f0f0f0; /* Совпадающий цвет фона */
+      background-color: #f0f0f0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,37 +23,67 @@
 
     /* Смайлик */
     .emoji {
-      font-size: 150px;
+      font-size: 100px;
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Маленькие смайлики */
+    .explosion-emoji {
       position: absolute;
-      z-index: 10; /* Поверх фейерверка */
+      font-size: 30px;
+      opacity: 0;
+      transition: transform 1s ease, opacity 1s ease;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.0/dist/index.global.min.js"></script>
 </head>
 <body>
-  <!-- Смайлик в центре -->
-  <div class="emoji">😄</div>
+  <!-- Центральный смайлик -->
+  <div class="emoji" id="mainEmoji">😄</div>
 
   <script>
-    // Запуск фейерверка с более яркими цветами для светлого фона
-    const container = document.body;
-    const fireworks = new Fireworks(container, {
-      hue: { min: 0, max: 360 },
-      delay: { min: 15, max: 25 },
-      brightness: { min: 55, max: 85 }, // Более высокая яркость для светлого фона
-      speed: 3,
-      acceleration: 1.04,
-      particles: 150,
-      trace: 4,
-      explosion: 6,
-      boundaries: {
-        top: 0,
-        bottom: container.clientHeight,
-        left: 0,
-        right: container.clientWidth
+    // Функция для создания эффекта "взрыва" смайликов
+    function explodeEmoji(x, y) {
+      const numberOfEmojis = 30; // Количество маленьких смайликов
+      const emojiContainer = document.body;
+
+      for (let i = 0; i < numberOfEmojis; i++) {
+        const explosionEmoji = document.createElement("div");
+        explosionEmoji.classList.add("explosion-emoji");
+        explosionEmoji.textContent = "😄"; // Тот же смайлик, что и основной
+        explosionEmoji.style.left = `${x}px`;
+        explosionEmoji.style.top = `${y}px`;
+
+        // Задаем случайный угол и расстояние "разлета"
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 200 + 50;
+        explosionEmoji.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+        explosionEmoji.style.opacity = "1";
+
+        // Добавляем смайлик в контейнер
+        emojiContainer.appendChild(explosionEmoji);
+
+        // Удаляем смайлик через 1 секунду
+        setTimeout(() => {
+          explosionEmoji.style.opacity = "0";
+          setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1000);
+        }, 1000);
       }
+    }
+
+    // Запуск "взрыва" при загрузке страницы
+    window.addEventListener("load", () => {
+      const mainEmoji = document.getElementById("mainEmoji");
+      const rect = mainEmoji.getBoundingClientRect();
+      explodeEmoji(rect.left + rect.width / 2, rect.top + rect.height / 2);
     });
-    fireworks.start();
+
+    // Повтор эффекта при клике на центральный смайлик
+    document.getElementById("mainEmoji").addEventListener("click", (e) => {
+      const rect = e.target.getBoundingClientRect();
+      explodeEmoji(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    });
   </script>
 </body>
 </html>
