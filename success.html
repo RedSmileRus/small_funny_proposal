@@ -16,7 +16,7 @@
       overflow: hidden;
       background-color: #f0f0f0;
       display: flex;
-      align-items: flex-start; /* Выровняем смайлик выше */
+      align-items: flex-start; /* Выровняем содержимое относительно верхней части */
       justify-content: center;
       position: relative;
     }
@@ -54,10 +54,16 @@
 
         // Генерация случайного смайлика с разными шансами
         const random = Math.random();
-        if (random < 0.003) {
-          explosionEmoji.textContent = "❤️"; // 0.3% шанс
-        } else if (random < 0.053) {
-          explosionEmoji.textContent = "😉"; // 5% шанс
+        if (random < 0.005) {
+          explosionEmoji.textContent = "🌕"; // 0.5% шанс - полная луна
+        } else if (random < 0.015) {
+          explosionEmoji.textContent = "🐺"; // 1% шанс - воющий волк
+        } else if (random < 0.045) {
+          explosionEmoji.textContent = "☕"; // 3% шанс - стаканчик кофе
+        } else if (random < 0.075) {
+          explosionEmoji.textContent = "❤️"; // 0.3% шанс - сердечко
+        } else if (random < 0.125) {
+          explosionEmoji.textContent = "😉"; // 5% шанс - кокетливый смайлик
         } else if (i < numberOfEmojis * 0.3) {
           explosionEmoji.textContent = "😄"; // 30% оригинальные смайлики
         } else {
