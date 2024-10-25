@@ -54,15 +54,15 @@
 
         // Генерация случайного смайлика с разными шансами
         const random = Math.random();
-        if (random < 0.005) {
-          explosionEmoji.textContent = "🌕"; // 0.5% шанс - полная луна
+        if (random < 0.003) {
+          explosionEmoji.textContent = "❤️"; // 0.5% шанс - полная луна
+        } else if (random < 0.005) {
+          explosionEmoji.textContent = "🌕"; // 1% шанс - воющий волк
         } else if (random < 0.015) {
-          explosionEmoji.textContent = "🐺"; // 1% шанс - воющий волк
+          explosionEmoji.textContent = "🐺"; // 3% шанс - стаканчик кофе
         } else if (random < 0.045) {
-          explosionEmoji.textContent = "☕"; // 3% шанс - стаканчик кофе
-        } else if (random < 0.075) {
-          explosionEmoji.textContent = "❤️"; // 0.3% шанс - сердечко
-        } else if (random < 0.125) {
+          explosionEmoji.textContent = "☕"; // 0.3% шанс - сердечко
+        } else if (random < 0.095) {
           explosionEmoji.textContent = "😉"; // 5% шанс - кокетливый смайлик
         } else if (i < numberOfEmojis * 0.3) {
           explosionEmoji.textContent = "😄"; // 30% оригинальные смайлики
