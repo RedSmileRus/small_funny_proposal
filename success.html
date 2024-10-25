@@ -53,9 +53,9 @@
 
         // Генерация случайного смайлика с разными шансами
         const random = Math.random();
-        if (random < 0.01) {
-          explosionEmoji.textContent = "❤️"; // 1% шанс
-        } else if (random < 0.06) {
+        if (random < 0.003) {
+          explosionEmoji.textContent = "❤️"; // 0.3% шанс
+        } else if (random < 0.053) {
           explosionEmoji.textContent = "😉"; // 5% шанс
         } else if (i < numberOfEmojis * 0.3) {
           explosionEmoji.textContent = "😄"; // 30% оригинальные смайлики
