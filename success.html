@@ -43,7 +43,6 @@
   <div class="emoji" id="mainEmoji">😄</div>
 
   <script>
-    // Функция для создания эффекта "взрыва" смайликов
     function explodeEmoji(x, y) {
       const numberOfEmojis = 30; // Количество маленьких смайликов
       const emojiContainer = document.body;
@@ -58,24 +57,25 @@
         // Начальная позиция в центре основного смайлика
         explosionEmoji.style.left = `${x}px`;
         explosionEmoji.style.top = `${y}px`;
-
-        // Задаем случайный угол разлета (все направления)
-        const angle = Math.random() * 2 * Math.PI; // Угол от 0 до 360 градусов
-        const distance = Math.random() * 200 + 50;
-
-        // Смещение от центра в случайном направлении
-        explosionEmoji.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
-        explosionEmoji.style.opacity = "1";
-
-        // Добавляем смайлик в контейнер
         emojiContainer.appendChild(explosionEmoji);
 
-        // Эффект "падения" через 1 секунду
+        // Добавляем небольшую задержку перед началом анимации
         setTimeout(() => {
-          explosionEmoji.style.transform += ` translateY(100px)`; // Падение вниз на 100px
-          explosionEmoji.style.opacity = "0";
-          setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1500);
-        }, 1000);
+          // Генерируем случайный угол разлета и расстояние
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.random() * 200 + 50;
+
+          // Задаем трансформацию для разлета
+          explosionEmoji.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
+          explosionEmoji.style.opacity = "1";
+          
+          // Падение вниз и исчезновение
+          setTimeout(() => {
+            explosionEmoji.style.transform += ` translateY(100px)`;
+            explosionEmoji.style.opacity = "0";
+            setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1000);
+          }, 1000);
+        }, 10); // Задержка перед началом разлета
       }
     }
 
