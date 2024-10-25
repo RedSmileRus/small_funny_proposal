@@ -8,13 +8,14 @@
   body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Выровняем содержимое по верхней части */
     height: 100vh;
     background-color: #f0f0f0; /* Цвет фона */
   }
   
   .container {
     text-align: center;
+    margin-top: 20vh; /* Смещение содержимого на 20% вниз от верхней части */
   }
   
   h1 {
