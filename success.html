@@ -21,7 +21,7 @@
       position: relative;
     }
 
-    /* Смайлик */
+    /* Центральный смайлик */
     .emoji {
       font-size: 100px;
       cursor: pointer;
@@ -34,7 +34,7 @@
       position: absolute;
       font-size: 30px;
       opacity: 0;
-      transition: transform 1s ease, opacity 1s ease;
+      transition: transform 1.5s ease, opacity 1s ease;
     }
   </style>
 </head>
@@ -43,7 +43,6 @@
   <div class="emoji" id="mainEmoji">😄</div>
 
   <script>
-    // Функция для создания эффекта "взрыва" смайликов
     function explodeEmoji(x, y) {
       const numberOfEmojis = 30; // Количество маленьких смайликов
       const emojiContainer = document.body;
@@ -51,23 +50,29 @@
       for (let i = 0; i < numberOfEmojis; i++) {
         const explosionEmoji = document.createElement("div");
         explosionEmoji.classList.add("explosion-emoji");
-        explosionEmoji.textContent = "😄"; // Тот же смайлик, что и основной
+
+        // Выбираем 30% смайликов оригинальных и 70% фейерверков
+        explosionEmoji.textContent = i < numberOfEmojis * 0.3 ? "😄" : "✨"; // Оригинал или звездочка
+
         explosionEmoji.style.left = `${x}px`;
         explosionEmoji.style.top = `${y}px`;
 
-        // Задаем случайный угол и расстояние "разлета"
-        const angle = Math.random() * 2 * Math.PI;
+        // Задаем случайный угол разлета (вверх и по сторонам)
+        const angle = Math.random() * Math.PI - Math.PI / 2; // Угол от -90 до +90 градусов
         const distance = Math.random() * 200 + 50;
+
+        // Начальное смещение вверх и в стороны
         explosionEmoji.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`;
         explosionEmoji.style.opacity = "1";
 
         // Добавляем смайлик в контейнер
         emojiContainer.appendChild(explosionEmoji);
 
-        // Удаляем смайлик через 1 секунду
+        // Эффект "падения" через 1 секунду
         setTimeout(() => {
+          explosionEmoji.style.transform += ` translateY(100px)`; // Падение вниз на 100px
           explosionEmoji.style.opacity = "0";
-          setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1000);
+          setTimeout(() => emojiContainer.removeChild(explosionEmoji), 1500);
         }, 1000);
       }
     }
