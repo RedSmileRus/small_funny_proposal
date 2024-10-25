@@ -16,7 +16,7 @@
       overflow: hidden;
       background-color: #f0f0f0;
       display: flex;
-      align-items: center;
+      align-items: flex-start; /* Выровняем смайлик выше */
       justify-content: center;
       position: relative;
     }
@@ -27,6 +27,7 @@
       cursor: pointer;
       position: relative;
       z-index: 10;
+      margin-top: 10vh; /* Смещение на 10% вниз от верха страницы */
     }
 
     /* Маленькие смайлики */
